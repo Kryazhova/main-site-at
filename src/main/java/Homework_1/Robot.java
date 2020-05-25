@@ -9,6 +9,7 @@ public class Robot implements Move  {
         this.name=name;
         powerRun = 2-1+(int)(Math.random()*2);
         powerJump = 0;
+        // описала в cat
     }
 
     public String getName() {

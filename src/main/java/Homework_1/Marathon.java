@@ -39,23 +39,20 @@ public class Marathon {
                         Wall.wall(starts.getPowerJump(),h);
                         if (toDo==true) System.out.println(starts.getName() + " перепрыгнул " + h + " м");
                         else  {
-                            System.out.println(starts.getName() + " не смог перепрыгнуть " + h + " м");
+                            System.out.println(starts.getName() + " не смог перепрыгнуть " + h + " м. Снят с дистанции");
+                            System.out.println("______________");
                             break;
                         }
                     }
                     else {
-                        System.out.println(starts.getName() + " не смог преодолеть  " + l + " км");
+                        System.out.println(starts.getName() + " не смог преодолеть  " + l + " км. Снят с дистанции");
+                        System.out.println("______________");
                         break;
                     }
                 }
             }
     }
 }
-
-
-//            Wall.wall(starts.getPowerJump());
-//            if (toDo = true) System.out.println(starts.getName() + " перепрыгнул  " + Wall.high + "м");
-//            else System.out.println(starts.getName() + " не смог перепрыгнуть  " + Wall.high + "м");
 
 
 // другие попытки решения
