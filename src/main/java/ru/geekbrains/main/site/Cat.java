@@ -1,6 +1,4 @@
-package Homework_1;
-
-import java.util.Random;
+package ru.geekbrains.main.site;
 
 public class Cat implements Move{
     String name;
@@ -27,12 +25,12 @@ public class Cat implements Move{
         return powerJump;
     }
 
-    //@Override
+    @Override
     public void run() {
         System.out.println(name+" бежит на 4 лапах");
     }
 
-    //@Override
+    @Override
     public void jump() {
         System.out.println(name + " красиво прыгает");
     }

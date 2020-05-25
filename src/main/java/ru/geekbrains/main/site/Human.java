@@ -1,4 +1,4 @@
-package Homework_1;
+package ru.geekbrains.main.site;
 
 public class Human implements Move{
     private String name;
@@ -24,12 +24,12 @@ public class Human implements Move{
         return powerJump;
     }
 
-    //@Override
+    @Override
     public void run() {
         System.out.println(name+" бежит на 2 ногах");
     }
 
-    //@Override
+    @Override
     public void jump() {
         System.out.println(name+" прыгает");
     }

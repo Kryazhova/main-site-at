@@ -1,4 +1,4 @@
-package Homework_1;
+package ru.geekbrains.main.site;
 
 public class Wall {
      int[] high;

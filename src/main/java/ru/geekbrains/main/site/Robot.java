@@ -1,4 +1,4 @@
-package Homework_1;
+package ru.geekbrains.main.site;
 
 public class Robot implements Move  {
     private String name;
@@ -24,11 +24,11 @@ public class Robot implements Move  {
         return powerJump;
     }
 
-    //@Override
+    @Override
     public void run() {
         System.out.println(name+" пытается бежать");
     }
-    //@Override
+    @Override
     public void jump() {
         System.out.println(name+" не умеет прыгать");
     }
