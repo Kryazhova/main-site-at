@@ -9,6 +9,7 @@ public class Human implements Move{
         this.name=name;
         powerRun = 15-8+(int)(Math.random()*16);
         powerJump = 2-1+(int)(Math.random()*2);
+        // описала в cat
     }
 
     public String getName() {
