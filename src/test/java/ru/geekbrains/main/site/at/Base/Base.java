@@ -3,7 +3,9 @@ package ru.geekbrains.main.site.at.Base;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -14,6 +16,7 @@ import java.util.concurrent.TimeUnit;
 public class Base {
     public WebDriver driver;
     public WebDriverWait wait3;
+    public WebDriverWait wait10;
 
     @BeforeEach
     void before() {
@@ -29,10 +32,11 @@ public class Base {
         driver.manage().timeouts().setScriptTimeout(60, TimeUnit.SECONDS);
         driver.get("https://geekbrains.ru/courses");
         wait3 = new WebDriverWait(driver, 3);
-
+        wait10 = new WebDriverWait(driver, 10);
     }
     @AfterEach
     void after(){
         driver.close();
     }
+
 }
