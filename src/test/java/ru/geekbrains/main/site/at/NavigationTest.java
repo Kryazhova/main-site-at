@@ -74,46 +74,5 @@ public class NavigationTest extends Base {
 //        WebElement textNamePage = driver.findElement(By.cssSelector("h2[class=\"gb-header__title\"]"));
 //        Assertions.assertEquals("Курсы", textNamePage.getText());
 //    }
-//
-//    @DisplayName("Проверка страницы Вебинары")
-//    @Test
-//    void events(){
-//        WebElement buttonEvents = driver.findElement(By.cssSelector("[id='nav'] [href='/events']"));
-//        buttonEvents.click();
-//        WebElement textNamePage = driver.findElement(By.cssSelector("h2[class=\"gb-header__title\"]"));
-//        Assertions.assertEquals("Вебинары", textNamePage.getText());
-//    }
-//
-//    @DisplayName("Проверка страницы Форум")
-//    @Test
-//    void topics() {
-//        WebElement buttonTopics = driver.findElement(By.cssSelector("[id='nav'] [href='/topics']"));
-//        buttonTopics.click();
-//        WebElement textNamePage = driver.findElement(By.cssSelector("h2[class=\"gb-header__title\"]"));
-//        Assertions.assertEquals("Форум", textNamePage.getText());
-//    }
-//    @DisplayName("Проверка страницы Блог")
-//    @Test
-//    void posts() {
-//        WebElement buttonPosts = driver.findElement(By.cssSelector("[id='nav'] [href='/posts']"));
-//        buttonPosts.click();
-//        WebElement textNamePage = driver.findElement(By.cssSelector("h2[class=\"gb-header__title\"]"));
-//        Assertions.assertEquals("Блог",textNamePage.getText());
-//    }
-//    @DisplayName("Проверка страницы Тесты")
-//    @Test
-//    void tests() {
-//        WebElement buttonTests = driver.findElement(By.cssSelector("[id='nav'] [href='/tests']"));
-//        buttonTests.click();
-//        WebElement textNamePage = driver.findElement(By.cssSelector("h2[class=\"gb-header__title\"]"));
-//        Assertions.assertEquals("Тесты",textNamePage.getText());
-//    }
-//    @DisplayName("Проверка страницы Карьера")
-//    @Test
-//    void career() {
-//        WebElement buttonCareer = driver.findElement(By.cssSelector("[id='nav'] [href='/career']"));
-//        buttonCareer.click();
-//        WebElement textNamePage = driver.findElement(By.cssSelector("h2[class=\"gb-header__title\"]"));
-//        Assertions.assertEquals("Карьера",textNamePage.getText());
-//    }
+
 
