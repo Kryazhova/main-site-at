@@ -23,7 +23,7 @@ import java.util.regex.Pattern;
 //            Тестов не 0
 //            В Проектах и компаниях отображается GeekBrains
 
-
+// Изменить во втором тесте проверки на hamcrest
 public class SearchTest extends Base {
     @Test
     void events() {
