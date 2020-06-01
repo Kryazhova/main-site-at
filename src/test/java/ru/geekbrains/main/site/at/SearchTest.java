@@ -1,14 +1,11 @@
 package ru.geekbrains.main.site.at;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import ru.geekbrains.main.site.at.Base.Base;
-
-import java.util.regex.Pattern;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -29,6 +26,7 @@ import static org.hamcrest.Matchers.*;
 
 // Изменить во втором тесте проверки на hamcrest
 public class SearchTest extends Base {
+
     @DisplayName("Проверка поиска")
     @Test
     void events() {
@@ -48,17 +46,17 @@ public class SearchTest extends Base {
 
 
         wait10.until(ExpectedConditions.textToBePresentInElement(professions,"Профессии"));
-        wait10.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.cssSelector("[class='profession-item-wrapper search_row col-md-6 col-xs-12 col-lg-4']"),2));
+        wait10.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.cssSelector("[class='profession-item-wrapper search_row col-md-6 col-xs-12 col-lg-4']"),1));
+
 
         wait3.until(ExpectedConditions.textToBePresentInElement(courses,"Курсы"));
         WebElement counts_courses = driver.findElement(By.cssSelector("[class=\"search-page-block__more\"][data-tab=\"courses\"]>span"));
-        assertThat(Integer.parseInt(counts_courses.getText()), anyOf (
-                greaterThan(15)));
+        assertThat(Integer.parseInt(counts_courses.getText()), greaterThan(15));
 
 
         wait3.until(ExpectedConditions.textToBePresentInElement(events,"Вебинары"));
         WebElement counts_events = driver.findElement(By.cssSelector("[class=\"search-page-block__more\"][data-tab=\"webinars\"]>span"));
-        assertThat(Integer.parseInt(counts_events.getText()),anyOf(
+        assertThat(Integer.parseInt(counts_events.getText()),allOf(
                 greaterThan(180),
                 lessThan(300)
         ));
@@ -69,18 +67,21 @@ public class SearchTest extends Base {
 
         wait3.until(ExpectedConditions.textToBePresentInElement(blogs,"Блоги"));
         WebElement counts_blog = driver.findElement(By.cssSelector("[class=\"search-page-block__more\"][data-tab=\"blogs\"]>span"));
-        Assertions.assertTrue(Integer.parseInt(counts_blog.getText())>300);
+        assertThat(Integer.parseInt(counts_blog.getText()),greaterThan(300));
 
         wait3.until(ExpectedConditions.textToBePresentInElement(forum,"Форум"));
         WebElement counts_forums = driver.findElement(By.cssSelector("[class=\"search-page-block__more\"][data-tab=\"forums\"]>span"));
-        Assertions.assertNotEquals(300,Integer.parseInt(counts_forums.getText()));
+        assertThat(Integer.parseInt(counts_forums.getText()),not(350));
 
+        //вот тут не уверена, что нужно было так решить
         wait3.until(ExpectedConditions.textToBePresentInElement(tests,"Тесты"));
         WebElement counts_tests = driver.findElement(By.cssSelector("[class=\"search-page-block__more\"][data-tab=\"tests\"]>span"));
-        Assertions.assertNotNull(counts_tests);
+        assertThat(Integer.parseInt(counts_tests.getText()),not(0));
+
 
         wait3.until(ExpectedConditions.textToBePresentInElement(projectAndCompany,"Проекты и компании"));
         WebElement counts_project = driver.findElement(By.cssSelector("[class=\"company-items\"]"));
-        wait3.until(ExpectedConditions.textMatches(By.cssSelector("[class=\"company-items\"]"), Pattern.compile("GeekBrains")));
+//        wait3.until(ExpectedConditions.textMatches(By.cssSelector("[class=\"company-items\"]"), Pattern.compile("GeekBrains")));
+        assertThat(counts_project.getText(),containsString("GeekBrains"));
     }
 }

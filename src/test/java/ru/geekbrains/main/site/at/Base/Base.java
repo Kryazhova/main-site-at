@@ -47,67 +47,28 @@ public class Base {
         }
     }
 
-//    static Stream<String> footer() {
-//        return Stream.of("[class='site-footer']", "[class='site-footer__icons']",
-//                "[class='site-footer__links']", "[class='site-footer__icons site-footer__icons_android']");
-//    }
-//
-//    @DisplayName("передача данны элементов футера")
-//    @ParameterizedTest
-//    @MethodSource("footer")
-//    public void check_footer(String nameFooter) {
-//        WebElement footerElement = driver.findElement(By.cssSelector(nameFooter));
-//        wait3.until(ExpectedConditions.visibilityOf(footerElement));
-//    }
-//
-//    static Stream<String> headers() {
-//        return Stream.of("[id='top-menu']", "h2[class='gb-header__title']",
-//                "[class='gb-top-menu__item']>[class='show-search-form']",
-//                "[class='gb-top-menu__item']>[href='/login']", "[href='/register']");
-//    }
-//
-//    @DisplayName("передача данных элементов хедера")
-//    @ParameterizedTest
-//    @MethodSource("headers")
-//    void check_headers(String nameHeader){
-//        WebElement headerElement = driver.findElement(By.cssSelector(nameHeader));
-//        wait3.until(ExpectedConditions.visibilityOf(headerElement));
-//        }
-
     @AfterEach
     void after() {
         driver.close();
     }
 
+    static String[] elements = {
+            "[id='top-menu']",
+            "h2[class='gb-header__title']",
+            "[class='gb-top-menu__item']>[class='show-search-form']",
+            "[class='gb-top-menu__item']>[href='/login']",
+            "[href='/register']",
+            "[class='site-footer']",
+            "[class='site-footer__icons']",
+            "[class='site-footer__links']",
+            "[class='site-footer__icons site-footer__icons_android']"
+    };
+
     public void test_pages() {
-        WebElement hh =  driver.findElement(By.cssSelector("[id='top-menu']"));
-        wait3.until(ExpectedConditions.visibilityOf(hh));
-
-        WebElement title = driver.findElement(By.cssSelector("h2[class='gb-header__title']"));
-        wait3.until(ExpectedConditions.visibilityOf(title));
-
-        WebElement icon_search = driver.findElement(By.cssSelector("[class='gb-top-menu__item']>[class='show-search-form']"));
-        wait3.until(ExpectedConditions.visibilityOf(icon_search));
-
-        WebElement icon_exit = driver.findElement(By.cssSelector("[class='gb-top-menu__item']>[href='/login']"));
-        wait3.until(ExpectedConditions.visibilityOf(icon_exit));
-
-        WebElement icon_registry = driver.findElement(By.cssSelector("[href='/register']"));
-        wait3.until(ExpectedConditions.visibilityOf(icon_registry));
-
-
-        WebElement footer = driver.findElement(By.cssSelector("[class='site-footer']"));
-        wait3.until(ExpectedConditions.visibilityOf(footer));
-
-        WebElement icons = driver.findElement(By.cssSelector("[class='site-footer__icons']"));
-        wait3.until(ExpectedConditions.visibilityOf(icons));
-
-
-        WebElement links = driver.findElement(By.cssSelector("[class='site-footer__links']"));
-        wait3.until(ExpectedConditions.visibilityOf(links));
-
-        WebElement icons_android = driver.findElement(By.cssSelector("[class='site-footer__icons site-footer__icons_android']"));
-        wait3.until(ExpectedConditions.visibilityOf(icons_android));
+        for (String o : elements){
+            WebElement testHeaders = driver.findElement(By.cssSelector(""));
+            wait3.until(ExpectedConditions.visibilityOf(testHeaders));
+        }
 
     }
 
