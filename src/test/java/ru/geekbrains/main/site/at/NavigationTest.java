@@ -41,7 +41,7 @@ public class NavigationTest extends Base {
 //        try {
 //            driver.findElement(By.cssSelector("button>[class=\"svg-icon icon-popup-close-button \"]")).click();
 //        }
-//        catch (WebDriverException e){
+//        catch (WebDriverException e){ 
 //            System.out.println("Не был найден необязательный элемент: " + e);
 //
 //        }
