@@ -1,12 +1,12 @@
-package ru.geekbrain.main.site.at.ThirdExample;
+package ru.geekbrain.main.site.at.ElementsTestNavigation;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import ru.geekbrain.main.site.at.Pages.Pages;
 
-public class NavigationElementsThree {
-    private WebDriver driver;
+public class NavigationElements {
 
     @FindBy(css = "[id='nav'] [href='/courses']")
     private WebElement buttonCourses;
@@ -26,12 +26,15 @@ public class NavigationElementsThree {
     @FindBy(css = "[id='nav'] [href='/career']")
     private WebElement buttonCareer;
 
-    public NavigationElementsThree(WebDriver driver) {
+    private WebDriver driver;
+
+    public NavigationElements(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
-    public void click (String name) {
+
+    public Pages click (String name) {
         switch (name){
             case "Курсы": {
                 buttonCourses.click();
@@ -60,5 +63,7 @@ public class NavigationElementsThree {
                 throw new RuntimeException("Нет кнопки: " + name);
             }
         }
+        return new Pages(driver);
     }
+
 }
