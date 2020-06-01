@@ -25,8 +25,7 @@ public class Base {
 
         WebDriverManager.chromedriver().setup();
         ChromeOptions option = new ChromeOptions();
-        option.addArguments("--disable-notifications");
-        option.addArguments("--disable-popup-blocking");
+        option.addArguments("--disable-notifications","--disable-popup-blocking");
         option.setExperimentalOption("excludeSwitches", Arrays.asList("disable-popup-blocking"));
         driver = new ChromeDriver(option);
         driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
@@ -42,6 +41,7 @@ public class Base {
         catch (WebDriverException e){
             System.out.println("Не был найден необязательный элемент: " + e);
         }
+
         finally {
 
         }
