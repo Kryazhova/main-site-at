@@ -41,7 +41,7 @@ public class Base {
         catch (WebDriverException e){
             System.out.println("Не был найден необязательный элемент: " + e);
         }
-
+//        finally - чтобы даже есть Exception, то Test будет выполняться
         finally {
 
         }
