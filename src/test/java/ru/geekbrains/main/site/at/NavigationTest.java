@@ -2,8 +2,10 @@ package ru.geekbrains.main.site.at;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import ru.geekbrains.main.site.at.Base.Base;
@@ -35,44 +37,46 @@ public class NavigationTest extends Base {
 //    }
 
 
-    static Stream<String> pages() {
+    static Stream<Arguments> pages() {
         return Stream.of(
-                "[id='nav'] [href='/courses']",
-                "[id='nav'] [href='/events']",
-                "[id='nav'] [href='/topics']",
-                "[id='nav'] [href='/posts']",
-                "[id='nav'] [href='/tests']",
-                "[id='nav'] [href='/career']"
+                Arguments.of("[id='nav'] [href='/courses']", "Курсы"),
+                Arguments.of( "[id='nav'] [href='/events']",  "Вебинары"),
+                Arguments.of("[id='nav'] [href='/topics']", "Форум"),
+                Arguments.of("[id='nav'] [href='/posts']",  "Блог"),
+                Arguments.of("[id='nav'] [href='/tests']", "Тесты"),
+                Arguments.of("[id='nav'] [href='/career']",  "Карьера")
         );
     }
 
-    // не получилось указать данные и по навигации и по названию поля в ParameterizedTest
 
     @DisplayName("Проверка страниц")
     @ParameterizedTest
     @MethodSource("pages")
-    void check_pages(String nameLocator) {
-        driver.findElement(By.cssSelector("button>[class=\"svg-icon icon-popup-close-button \"]")).click();
-        //только пока есть модальное окно
+    void check_pages(String nameLocator, String namePage) {
+        try {
+            driver.findElement(By.cssSelector("button>[class=\"svg-icon icon-popup-close-button \"]")).click();
+        }
+        catch (WebDriverException e){
+            System.out.println("Не был найден необязательный элемент: " + e);
 
-        WebElement pagesElement = driver.findElement(By.cssSelector(nameLocator));
-        pagesElement.click();
-        WebElement testTextPages = driver.findElement(By.cssSelector("h2[class=\"gb-header__title\"]"));
-        wait3.until(ExpectedConditions.visibilityOf(testTextPages));
-        test_pages();
+        }
+
+        //для модального окна, так как оно не всегда появлялось
+
+        //прописала finally, так как по другому у меня не получилось продолжить проверку, если
+        // ловила WebDriverException. Может быть можно как-то без finally указать, что этот код
+        // нам всегда нужен?
+        finally {
+            WebElement pagesElement = driver.findElement(By.cssSelector(nameLocator));
+            pagesElement.click();
+            WebElement textNamePage = driver.findElement(By.cssSelector("h2[class=\"gb-header__title\"]"));
+            wait3.until(ExpectedConditions.textToBePresentInElement(textNamePage, namePage));
+//        Assertions.assertEquals(namePage, textNamePage.getText());
+            test_pages();
+        }
     }
+
 }
 
-
-
-//    @DisplayName("Проверка страницы Курсы")
-//    @Test
-//    void courses(){
-////        driver.findElement(By.cssSelector("button>[class=\"svg-icon icon-popup-close-button \"]")).click();
-//        WebElement buttonCourses = driver.findElement(By.cssSelector("[id='nav'] [href='/courses']"));
-//        buttonCourses.click();
-//        WebElement textNamePage = driver.findElement(By.cssSelector("h2[class=\"gb-header__title\"]"));
-//        Assertions.assertEquals("Курсы", textNamePage.getText());
-//    }
 
 
