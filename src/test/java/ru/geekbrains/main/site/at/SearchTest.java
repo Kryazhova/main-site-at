@@ -1,5 +1,6 @@
 package ru.geekbrains.main.site.at;
 
+import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -8,6 +9,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import ru.geekbrains.main.site.at.Base.Base;
 
 import java.util.regex.Pattern;
+
+import static org.hamcrest.Matchers.anyOf;
+import static org.hamcrest.Matchers.greaterThan;
 
 
 //    Перейти на сайт https://geekbrains.ru/courses
@@ -41,13 +45,15 @@ public class SearchTest extends Base {
         WebElement tests = driver.findElement(By.xpath(".//header/h2[text()='Тесты']"));
         WebElement projectAndCompany = driver.findElement(By.xpath(".//header/h2[text()='Проекты и компании']"));
 
+
         wait10.until(ExpectedConditions.textToBePresentInElement(professions,"Профессии"));
         wait10.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.cssSelector("[class='profession-item-wrapper search_row col-md-6 col-xs-12 col-lg-4']"),2));
 
         wait3.until(ExpectedConditions.textToBePresentInElement(courses,"Курсы"));
         WebElement counts_courses = driver.findElement(By.cssSelector("[class=\"search-page-block__more\"][data-tab=\"courses\"]>span"));
-        int c_courses = Integer.parseInt(counts_courses.getText());
-        Assertions.assertTrue(c_courses>15);
+        MatcherAssert.assertThat(Integer.parseInt(counts_courses.getText()), anyOf (
+                greaterThan(45)));
+
 
         wait3.until(ExpectedConditions.textToBePresentInElement(events,"Вебинары"));
         WebElement counts_events = driver.findElement(By.cssSelector("[class=\"search-page-block__more\"][data-tab=\"webinars\"]>span"));

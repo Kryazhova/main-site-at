@@ -5,6 +5,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -34,6 +35,16 @@ public class Base {
         driver.get("https://geekbrains.ru/courses");
         wait3 = new WebDriverWait(driver, 3);
         wait10 = new WebDriverWait(driver, 10);
+
+        try {
+            driver.findElement(By.cssSelector("button>[class=\"svg-icon icon-popup-close-button \"]")).click();
+        }
+        catch (WebDriverException e){
+            System.out.println("Не был найден необязательный элемент: " + e);
+        }
+        finally {
+
+        }
     }
 
 //    static Stream<String> footer() {
