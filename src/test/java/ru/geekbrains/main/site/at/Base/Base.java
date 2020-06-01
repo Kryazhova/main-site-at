@@ -66,7 +66,7 @@ public class Base {
 
     public void test_pages() {
         for (String o : elements){
-            WebElement testHeaders = driver.findElement(By.cssSelector(""));
+            WebElement testHeaders = driver.findElement(By.cssSelector(o));
             wait3.until(ExpectedConditions.visibilityOf(testHeaders));
         }
 
