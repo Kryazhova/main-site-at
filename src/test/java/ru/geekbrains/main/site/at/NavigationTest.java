@@ -25,18 +25,6 @@ public class NavigationTest extends Base {
 //    Тесты
 //    Карьера
 
-//    static Stream<String> pages() {
-//        return Stream.of(
-//                "Курсы",
-//                "Вебинары",
-//                "Форум",
-//                "Блог",
-//                "Тесты",
-//                "Карьера"
-//              );
-//    }
-
-
     static Stream<Arguments> pages() {
         return Stream.of(
                 Arguments.of("[id='nav'] [href='/courses']", "Курсы"),
