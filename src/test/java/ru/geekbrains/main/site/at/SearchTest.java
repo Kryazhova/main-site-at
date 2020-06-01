@@ -1,7 +1,7 @@
 package ru.geekbrains.main.site.at;
 
-import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -10,8 +10,8 @@ import ru.geekbrains.main.site.at.Base.Base;
 
 import java.util.regex.Pattern;
 
-import static org.hamcrest.Matchers.anyOf;
-import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
 
 
 //    Перейти на сайт https://geekbrains.ru/courses
@@ -29,6 +29,7 @@ import static org.hamcrest.Matchers.greaterThan;
 
 // Изменить во втором тесте проверки на hamcrest
 public class SearchTest extends Base {
+    @DisplayName("Проверка поиска")
     @Test
     void events() {
         WebElement buttonSearch = driver.findElement(By.cssSelector("[class=\"show-search-form\"] [class=\"svg-icon icon-search \"]"));
@@ -37,7 +38,7 @@ public class SearchTest extends Base {
         inputSearch.sendKeys("java");
 
 
-        WebElement professions = driver.findElement(By.cssSelector("[id=\"professions\"] h2"));
+        WebElement professions = driver.findElement(By.xpath(".//header/h2[text()='Профессии']"));
         WebElement courses = driver.findElement(By.xpath(".//header/h2[text()='Курсы']"));
         WebElement events = driver.findElement(By.xpath(".//header/h2[text()='Вебинары']"));
         WebElement blogs = driver.findElement(By.xpath(".//header/h2[text()='Блоги']"));
@@ -51,17 +52,20 @@ public class SearchTest extends Base {
 
         wait3.until(ExpectedConditions.textToBePresentInElement(courses,"Курсы"));
         WebElement counts_courses = driver.findElement(By.cssSelector("[class=\"search-page-block__more\"][data-tab=\"courses\"]>span"));
-        MatcherAssert.assertThat(Integer.parseInt(counts_courses.getText()), anyOf (
-                greaterThan(45)));
+        assertThat(Integer.parseInt(counts_courses.getText()), anyOf (
+                greaterThan(15)));
 
 
         wait3.until(ExpectedConditions.textToBePresentInElement(events,"Вебинары"));
         WebElement counts_events = driver.findElement(By.cssSelector("[class=\"search-page-block__more\"][data-tab=\"webinars\"]>span"));
-        Assertions.assertTrue(Integer.parseInt(counts_events.getText())>180);
-        Assertions.assertTrue(Integer.parseInt(counts_events.getText())<300);
+        assertThat(Integer.parseInt(counts_events.getText()),anyOf(
+                greaterThan(180),
+                lessThan(300)
+        ));
 
         WebElement first_events = driver.findElement(By.cssSelector("[class=\"event__title h3 search_text\"]"));
-        wait3.until(ExpectedConditions.textToBePresentInElement(first_events,"Java Junior. Что нужно знать для успешного собеседования?"));
+//        wait3.until(ExpectedConditions.textToBePresentInElement(first_events,"Java Junior. Что нужно знать для успешного собеседования?"));
+        assertThat(first_events.getText(), containsString("Java Junior. Что нужно знать для успешного собеседования?"));
 
         wait3.until(ExpectedConditions.textToBePresentInElement(blogs,"Блоги"));
         WebElement counts_blog = driver.findElement(By.cssSelector("[class=\"search-page-block__more\"][data-tab=\"blogs\"]>span"));
