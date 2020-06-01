@@ -2,11 +2,14 @@ package ru.geekbrains.main.site.at;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import ru.geekbrains.main.site.at.Base.Base;
+
+import java.util.stream.Stream;
 
 public class NavigationTest extends Base {
 
@@ -21,7 +24,16 @@ public class NavigationTest extends Base {
 //    Тесты
 //    Карьера
 
-
+    static Stream<Arguments> pages() {
+        return Stream.of(
+                Arguments.of("[id='nav'] [href='/courses']", "Курсы"),
+                Arguments.of( "[id='nav'] [href='/events']",  "Вебинары"),
+                Arguments.of("[id='nav'] [href='/topics']", "Форум"),
+                Arguments.of("[id='nav'] [href='/posts']",  "Блог"),
+                Arguments.of("[id='nav'] [href='/tests']", "Тесты"),
+                Arguments.of("[id='nav'] [href='/career']",  "Карьера")
+        );
+    }
     @DisplayName("Проверка страниц")
     @ParameterizedTest
     @MethodSource("pages")
