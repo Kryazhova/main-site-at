@@ -1,6 +1,7 @@
 package ru.geekbrain.main.site.at.Pages;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -40,22 +41,19 @@ public class Pages {
         PageFactory.initElements(driver,this);
     }
 
-    //закрытие поп-апа
+    //закрытие поп-апа c обработкой ошибки
     public Pages closePopup() {
-        popupClose.click();
+        try {
+            popupClose.click();
+        }
+        catch (WebDriverException e) {
+            System.out.println("Не был найден необязательный элемент: " + e);
+        }
+        finally {
+
+        }
         return this;
    }
-//     try {
-//        driver.findElement(By.cssSelector("button>[class=\"svg-icon icon-popup-close-button \"]")).click();
-//    }
-//        catch (
-//    WebDriverException e){
-//        System.out.println("Не был найден необязательный элемент: " + e);
-//    }
-//        finally - чтобы даже есть Exception, то Test будет выполняться
-//        finally {
-//
-//    }
 
     //загрузка страниц
     public NavigationElements getNavigation() {
