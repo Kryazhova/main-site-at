@@ -1,7 +1,6 @@
 package ru.geekbrain.main.site.at.Pages;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -43,15 +42,18 @@ public class Pages {
 
     //закрытие поп-апа c обработкой ошибки
     public Pages closePopup() {
-        try {
-            popupClose.click();
-        }
-        catch (WebDriverException e) {
-            System.out.println("Не был найден необязательный элемент: " + e);
-        }
-        finally {
-
-        }
+        popupClose.click();
+//        Решили методом деления страниц. Так как мы точно знаем, где будут поп-апы
+//
+//        try {
+//            popupClose.click();
+//        }
+//        catch (WebDriverException e) {
+//            System.out.println("Не был найден необязательный элемент: " + e);
+//        }
+//        finally {
+//
+//        }
         return this;
    }
 

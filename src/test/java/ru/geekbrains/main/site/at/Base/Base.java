@@ -24,7 +24,7 @@ public class Base {
         option.addArguments("--disable-notifications","--disable-popup-blocking");
         option.setExperimentalOption("excludeSwitches", Arrays.asList("disable-popup-blocking"));
         driver = new ChromeDriver(option);
-        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(6, TimeUnit.SECONDS);
         driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
         driver.manage().timeouts().setScriptTimeout(60, TimeUnit.SECONDS);
         driver.get("https://geekbrains.ru/courses");

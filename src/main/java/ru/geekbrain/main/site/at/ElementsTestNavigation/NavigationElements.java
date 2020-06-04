@@ -38,6 +38,7 @@ public class NavigationElements {
         switch (name){
             case "Курсы": {
                 buttonCourses.click();
+                break;
             }
             case "Вебинары": {
                 buttonEvents.click();
@@ -59,6 +60,9 @@ public class NavigationElements {
                 buttonCareer.click();
                 break;
             }
+//            default: {
+//                throw new ButtonNotFoundException("Нет кнопки: " + name);
+//            }
             default: {
                 throw new RuntimeException("Нет кнопки: " + name);
             }
