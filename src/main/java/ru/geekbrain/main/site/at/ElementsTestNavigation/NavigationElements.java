@@ -38,6 +38,7 @@ public class NavigationElements {
         switch (name){
             case "Курсы": {
                 buttonCourses.click();
+                break;
             }
             case "Вебинары": {
                 buttonEvents.click();
