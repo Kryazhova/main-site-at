@@ -1,5 +1,6 @@
 package ru.geekbrain.main.site.at.Pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -33,35 +34,35 @@ public class SearchPage {
         PageFactory.initElements(driver,this);
     }
 
-    //закрытие поп-апа
+   @Step("Закрытие поп-апа на стартовой странице")
     public SearchPage closePopup() {
         popupClose.click();
         return this;
     }
 
-    //открытие строки поиска
+    @Step("Нажатие на иконку поиска")
     public SearchPage clickIconSearch(){
         searchIcon.click();
         return this;
     }
 
-    //ввод текста
+    @Step("Ввод текста 'Java' для проверки поиска")
     public SearchPage inputSearchText() {
         searchPanel.sendKeys("java");
         return this;
     }
 
-    //проверка, что отобразились все необходимые блоки
+    //Проверка отображеения передаваемого блока - Step прописан в методе
     public SearchElement getSearchElement() {
         return searchElement;
     }
 
-    //проверка, что количество найденных элементов верное
+    //Проверка  на количество найденных элементов - Step прописан в методе
     public CountSearchElement getCountSearchElement(){
         return countSearchElement;
     }
 
-    //проверка, что найдены нужные элементы
+    //Проверка, что найдены нужные элементы - Step прописан в методе
     public TextSearchTest getTextSearchTest(){
         return textSearchTest;
     }

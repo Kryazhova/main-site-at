@@ -1,5 +1,6 @@
 package ru.geekbrain.main.site.at.Pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -40,7 +41,7 @@ public class Pages {
         PageFactory.initElements(driver,this);
     }
 
-    //закрытие поп-апа c обработкой ошибки
+    @Step("Закрытие поп-апа на стартовой странице \"Курсы\"")
     public Pages closePopup() {
         popupClose.click();
 //        Решили методом деления страниц. Так как мы точно знаем, где будут поп-апы
@@ -57,24 +58,24 @@ public class Pages {
         return this;
    }
 
-    //загрузка страниц
+    @Step ("Проверка навигации")
     public NavigationElements getNavigation() {
         return navigation;
     }
 
-    //проверка навигации
+    @Step("Проверка загрузки страницы {expectedNamePage}")
     public Pages checkNamePage(String expectedNamePage) {
         new WebDriverWait(driver, 10)
                 .until(ExpectedConditions.textToBePresentInElement(namePage, expectedNamePage));
         return this;
     }
 
-    //проверка хедера
+    @Step("Проверка хедера")
     public HeaderElements getHeaderElements() {
        return headerElements;
     }
 
-    //проверка футера
+    @Step("Проверка футера")
     public FooterElements getFooterElements() {
        return footerElements;
     }

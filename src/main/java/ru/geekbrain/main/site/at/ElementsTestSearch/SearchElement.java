@@ -1,5 +1,6 @@
 package ru.geekbrain.main.site.at.ElementsTestSearch;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -36,7 +37,7 @@ public class SearchElement {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
-
+    @Step("Проверка блока {name}")
     public SearchPage testSearchPage (String name) {
         switch (name){
             case "Профессии": {

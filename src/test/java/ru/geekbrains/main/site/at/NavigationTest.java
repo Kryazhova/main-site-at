@@ -1,5 +1,6 @@
 package ru.geekbrains.main.site.at;
 
+import io.qameta.allure.Description;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -38,6 +39,7 @@ public class NavigationTest extends Base {
     }
 
     @DisplayName("Улучшенная проверка с Page Factory для каждой страницы навигации")
+    @Description("Проверка навигации")
     @ParameterizedTest(name = "{index} => Нажатие на: {0}")
     @MethodSource("pageNavigation")
     void testPagesWithPopUp(String namePage){

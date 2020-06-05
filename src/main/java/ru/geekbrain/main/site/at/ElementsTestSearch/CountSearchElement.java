@@ -1,5 +1,6 @@
 package ru.geekbrain.main.site.at.ElementsTestSearch;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -34,7 +35,7 @@ public class CountSearchElement {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
-
+    @Step("Проверка на количество найденных элементов для блока {name}")
     public SearchPage countSearchElement(String name){
         switch (name){
             case "Профессии": {

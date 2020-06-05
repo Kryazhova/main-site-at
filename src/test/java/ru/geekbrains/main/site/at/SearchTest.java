@@ -1,5 +1,6 @@
 package ru.geekbrains.main.site.at;
 
+import io.qameta.allure.Description;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import ru.geekbrain.main.site.at.Pages.SearchPage;
@@ -31,6 +32,7 @@ public class SearchTest extends Base {
 
 
     @DisplayName("Проверка поиска")
+    @Description("Проверка поиска по слову \"Java\"")
     @Test
      void events(){
        new SearchPage(driver)
