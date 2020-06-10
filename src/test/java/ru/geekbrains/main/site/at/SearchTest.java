@@ -35,7 +35,7 @@ public class SearchTest extends Base {
     @Test
      void events(){
        new SearchPage(driver)
-//               .closePopup()
+               .closePopup()
                .clickIconSearch()
                .inputSearchText();
        for (String block:blockSearch){
