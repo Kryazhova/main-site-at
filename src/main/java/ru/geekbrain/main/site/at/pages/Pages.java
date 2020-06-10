@@ -1,4 +1,4 @@
-package ru.geekbrain.main.site.at.Pages;
+package ru.geekbrain.main.site.at.pages;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
@@ -7,9 +7,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import ru.geekbrain.main.site.at.ElementsTestNavigation.FooterElements;
-import ru.geekbrain.main.site.at.ElementsTestNavigation.HeaderElements;
-import ru.geekbrain.main.site.at.ElementsTestNavigation.NavigationElements;
+import ru.geekbrain.main.site.at.elementsTestNavigation.FooterElements;
+import ru.geekbrain.main.site.at.elementsTestNavigation.HeaderElements;
+import ru.geekbrain.main.site.at.elementsTestNavigation.NavigationElements;
 
 public class Pages {
 
@@ -44,17 +44,6 @@ public class Pages {
     @Step("Закрытие поп-апа на стартовой странице \"Курсы\"")
     public Pages closePopup() {
         popupClose.click();
-//        Решили методом деления страниц. Так как мы точно знаем, где будут поп-апы
-//
-//        try {
-//            popupClose.click();
-//        }
-//        catch (WebDriverException e) {
-//            System.out.println("Не был найден необязательный элемент: " + e);
-//        }
-//        finally {
-//
-//        }
         return this;
    }
 

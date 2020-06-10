@@ -1,11 +1,11 @@
-package ru.geekbrain.main.site.at.ElementsTestSearch;
+package ru.geekbrain.main.site.at.elementsTestSearch;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import ru.geekbrain.main.site.at.Pages.SearchPage;
+import ru.geekbrain.main.site.at.pages.SearchPage;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;

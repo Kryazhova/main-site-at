@@ -1,4 +1,4 @@
-package ru.geekbrain.main.site.at.ElementsTestNavigation;
+package ru.geekbrain.main.site.at.elementsTestNavigation;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import ru.geekbrain.main.site.at.Pages.Pages;
+import ru.geekbrain.main.site.at.pages.Pages;
 
 //верхнеуровневые проверки футера
 

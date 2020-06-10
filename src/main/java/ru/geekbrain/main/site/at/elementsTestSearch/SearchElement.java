@@ -1,4 +1,4 @@
-package ru.geekbrain.main.site.at.ElementsTestSearch;
+package ru.geekbrain.main.site.at.elementsTestSearch;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import ru.geekbrain.main.site.at.Pages.SearchPage;
+import ru.geekbrain.main.site.at.pages.SearchPage;
 
 public class SearchElement {
     private WebDriver driver;
@@ -39,40 +39,34 @@ public class SearchElement {
     }
     @Step("Проверка блока {name}")
     public SearchPage testSearchPage (String name) {
+        WebDriverWait wait20 = new WebDriverWait(driver,20);
         switch (name){
             case "Профессии": {
-                new WebDriverWait(driver,20)
-                        .until(ExpectedConditions.textToBePresentInElement(profession, name));
+                wait20.until(ExpectedConditions.textToBePresentInElement(profession, name));
                 break;
             }
             case "Курсы": {
-                new WebDriverWait(driver,20)
-                        .until(ExpectedConditions.textToBePresentInElement(course, name));
+                wait20.until(ExpectedConditions.textToBePresentInElement(course, name));
                 break;
             }
             case "Вебинары": {
-                new WebDriverWait(driver,20)
-                        .until(ExpectedConditions.textToBePresentInElement(event, name));
+                wait20.until(ExpectedConditions.textToBePresentInElement(event, name));
                 break;
             }
             case "Блоги": {
-                new WebDriverWait(driver,20)
-                        .until(ExpectedConditions.textToBePresentInElement(blog, name));
+                wait20.until(ExpectedConditions.textToBePresentInElement(blog, name));
                 break;
             }
             case "Форум": {
-                new WebDriverWait(driver,20)
-                        .until(ExpectedConditions.textToBePresentInElement(forums, name));
+                wait20.until(ExpectedConditions.textToBePresentInElement(forums, name));
                 break;
             }
             case "Тесты": {
-                new WebDriverWait(driver,20)
-                        .until(ExpectedConditions.textToBePresentInElement(test, name));
+                wait20.until(ExpectedConditions.textToBePresentInElement(test, name));
                 break;
             }
             case "Проекты и компании": {
-                new WebDriverWait(driver,20)
-                        .until(ExpectedConditions.textToBePresentInElement(projectAndCompanies, name));
+                wait20.until(ExpectedConditions.textToBePresentInElement(projectAndCompanies, name));
                 break;
             }
             default: {

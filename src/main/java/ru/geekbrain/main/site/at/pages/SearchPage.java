@@ -1,13 +1,13 @@
-package ru.geekbrain.main.site.at.Pages;
+package ru.geekbrain.main.site.at.pages;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import ru.geekbrain.main.site.at.ElementsTestSearch.CountSearchElement;
-import ru.geekbrain.main.site.at.ElementsTestSearch.SearchElement;
-import ru.geekbrain.main.site.at.ElementsTestSearch.TextSearchTest;
+import ru.geekbrain.main.site.at.elementsTestSearch.CountSearchElement;
+import ru.geekbrain.main.site.at.elementsTestSearch.SearchElement;
+import ru.geekbrain.main.site.at.elementsTestSearch.TextSearchTest;
 
 public class SearchPage {
     private WebDriver driver;

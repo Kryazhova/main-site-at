@@ -3,8 +3,8 @@ package ru.geekbrains.main.site.at;
 import io.qameta.allure.Description;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import ru.geekbrain.main.site.at.Pages.SearchPage;
-import ru.geekbrains.main.site.at.Base.Base;
+import ru.geekbrain.main.site.at.pages.SearchPage;
+import ru.geekbrains.main.site.at.base.Base;
 
 //    Перейти на сайт https://geekbrains.ru/courses
 //            Нажать на кнопку Поиск
@@ -30,16 +30,14 @@ public class SearchTest extends Base {
             "Тесты",
             "Проекты и компании" };
 
-
     @DisplayName("Проверка поиска")
     @Description("Проверка поиска по слову \"Java\"")
     @Test
      void events(){
        new SearchPage(driver)
-               .closePopup()
+//               .closePopup()
                .clickIconSearch()
                .inputSearchText();
-
        for (String block:blockSearch){
            new SearchPage(driver)
                    .getSearchElement().testSearchPage(block)

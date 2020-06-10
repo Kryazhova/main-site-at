@@ -1,4 +1,4 @@
-package ru.geekbrains.main.site.at.Exceptions;
+package ru.geekbrains.main.site.at.exceptions;
 
 import org.junit.jupiter.api.Test;
 
