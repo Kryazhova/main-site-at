@@ -41,50 +41,31 @@ public class CountTest {
 
     //        Проверка на количество элементов
     @Step("Проверка, что найдено правильное количество элементов для блока {blocks}")
-    public CountTest checkCount(Blocks blocks, Matcher<Integer> matcher) {
-        assertThat(Integer.parseInt(blocks.getText()), matcher);
+    public CountTest checkCount(String blocks, Matcher<Integer> matcher) {
+        String сount = getButton(blocks).getText();
+        assertThat(Integer.parseInt(сount), matcher);
         return this;
     }
 
 
-    private WebElement getButton(Blocks blocks) {
+    private WebElement getButton(String blocks) {
         switch (blocks) {
-            case Professions:
+            case "Профессии":
                 return professions;
-            case Courses:
+            case "Курсы":
                 return courses;
-            case Events:
+            case "Вебинары":
                 return events;
-            case Blogs:
+            case "Блоги":
                 return blogs;
-            case Forum:
+            case "Форум":
                 return forum;
-            case Tests:
+            case "Тесты":
                 return tests;
-            case Companies:
+            case "Проекты и компании":
                 return project ;
             default:
                 throw new IllegalStateException("Unexpected value: " + blocks);
-        }
-    }
-    // Enum —  специальный класс для создания списка значений.
-    public enum Blocks {
-        Professions("Профессии"),
-        Courses("Курсы"),
-        Events("Вебинары"),
-        Blogs("Блоги"),
-        Forum("Форум"),
-        Tests("Тесты"),
-        Companies("Проекты и компании");
-
-        private String text;
-
-        Blocks(String text) {
-            this.text = text;
-        }
-
-        public String getText() {
-            return text;
         }
     }
 }

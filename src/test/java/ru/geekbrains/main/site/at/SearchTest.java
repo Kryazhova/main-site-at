@@ -3,7 +3,6 @@ package ru.geekbrains.main.site.at;
 import io.qameta.allure.Description;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import ru.geekbrain.main.site.at.elementsTestSearch.CountTest;
 import ru.geekbrain.main.site.at.pages.SearchPage;
 import ru.geekbrains.main.site.at.base.Base;
 
@@ -44,14 +43,14 @@ public class SearchTest extends Base {
                 .getTextSearchTest()
                 .textSearchTest(nameTextCheck)
                 .getCountTest()
-                .checkCount(CountTest.Blocks.Professions, greaterThanOrEqualTo(2))
-                .checkCount(CountTest.Blocks.Courses, greaterThan(15))
-                .checkCount(CountTest.Blocks.Events, allOf(
+                .checkCount("Профессии", greaterThanOrEqualTo(2))
+                .checkCount("Курсы", greaterThan(15))
+                .checkCount("Вебинары", allOf(
                         greaterThan(180),
                         lessThan(300)))
-                .checkCount(CountTest.Blocks.Blogs, greaterThan(300))
-                .checkCount(CountTest.Blocks.Forum, not(350))
-                .checkCount(CountTest.Blocks.Tests, not(0));
+                .checkCount("Блоги", greaterThan(300))
+                .checkCount("Формур", not(350))
+                .checkCount("Тесты", not(0));
 
     }
 }
