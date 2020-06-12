@@ -49,7 +49,7 @@ public class SearchTest extends Base {
                         greaterThan(180),
                         lessThan(300)))
                 .checkCount("Блоги", greaterThan(300))
-                .checkCount("Формур", not(350))
+                .checkCount("Форум", not(350))
                 .checkCount("Тесты", not(0));
 
     }
