@@ -48,8 +48,7 @@ public class SearchTest extends Base {
                 .checkCount(CountTest.Blocks.Courses, greaterThan(15))
                 .checkCount(CountTest.Blocks.Events, allOf(
                         greaterThan(180),
-                        lessThan(300)
-                ))
+                        lessThan(300)))
                 .checkCount(CountTest.Blocks.Blogs, greaterThan(300))
                 .checkCount(CountTest.Blocks.Forum, not(350))
                 .checkCount(CountTest.Blocks.Tests, not(0));
