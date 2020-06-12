@@ -38,39 +38,41 @@ public class SearchElement {
         PageFactory.initElements(driver, this);
     }
     @Step("Проверка блока {name}")
-    public SearchPage testSearchPage (String name) {
+    public SearchPage testSearchPage (String[] name) {
         WebDriverWait wait20 = new WebDriverWait(driver,20);
-        switch (name){
-            case "Профессии": {
-                wait20.until(ExpectedConditions.textToBePresentInElement(profession, name));
-                break;
-            }
-            case "Курсы": {
-                wait20.until(ExpectedConditions.textToBePresentInElement(course, name));
-                break;
-            }
-            case "Вебинары": {
-                wait20.until(ExpectedConditions.textToBePresentInElement(event, name));
-                break;
-            }
-            case "Блоги": {
-                wait20.until(ExpectedConditions.textToBePresentInElement(blog, name));
-                break;
-            }
-            case "Форум": {
-                wait20.until(ExpectedConditions.textToBePresentInElement(forums, name));
-                break;
-            }
-            case "Тесты": {
-                wait20.until(ExpectedConditions.textToBePresentInElement(test, name));
-                break;
-            }
-            case "Проекты и компании": {
-                wait20.until(ExpectedConditions.textToBePresentInElement(projectAndCompanies, name));
-                break;
-            }
-            default: {
-                throw new RuntimeException("Нет блока: " + name);
+        for (String nameBlock:name) {
+            switch (nameBlock) {
+                case "Профессии": {
+                    wait20.until(ExpectedConditions.textToBePresentInElement(profession, nameBlock));
+                    break;
+                }
+                case "Курсы": {
+                    wait20.until(ExpectedConditions.textToBePresentInElement(course, nameBlock));
+                    break;
+                }
+                case "Вебинары": {
+                    wait20.until(ExpectedConditions.textToBePresentInElement(event, nameBlock));
+                    break;
+                }
+                case "Блоги": {
+                    wait20.until(ExpectedConditions.textToBePresentInElement(blog, nameBlock));
+                    break;
+                }
+                case "Форум": {
+                    wait20.until(ExpectedConditions.textToBePresentInElement(forums, nameBlock));
+                    break;
+                }
+                case "Тесты": {
+                    wait20.until(ExpectedConditions.textToBePresentInElement(test, nameBlock));
+                    break;
+                }
+                case "Проекты и компании": {
+                    wait20.until(ExpectedConditions.textToBePresentInElement(projectAndCompanies, nameBlock));
+                    break;
+                }
+                default: {
+                    throw new RuntimeException("Нет блока: " + nameBlock);
+                }
             }
         }
         return new SearchPage(driver);

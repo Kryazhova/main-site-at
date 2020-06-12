@@ -25,37 +25,20 @@ public class TextSearchTest {
     }
 
     @Step("Проверка, что найдены нужные элементы в блоке {name}")
-    public SearchPage textSearchTest (String name) {
-        switch (name){
-            case "Профессии": {
-                System.out.println("Нет проверки на содержание для данного блока: " + name);
-            }
-            case "Курсы": {
-                System.out.println("Нет проверки на содержание для блока: " + name );
-                break;
-            }
-            case "Вебинары": {
-                assertThat(event.getText(), containsString("Java Junior. Что нужно знать для успешного собеседования?"));
-                break;
-            }
-            case "Блоги": {
-                System.out.println("Нет проверки на содержание для  блока: " + name);
-                break;
-            }
-            case "Форум": {
-                System.out.println("Нет проверки на содержание для  блока " + name);
-                break;
-            }
-            case "Тесты": {
-                System.out.println("Нет проверки на содержание для блока " + name);
-                break;
-            }
-            case "Проекты и компании": {
-                assertThat(project.getText(),containsString("GeekBrains"));
-                break;
-            }
-            default: {
-                throw new RuntimeException("Нет блока: " + name);
+    public SearchPage textSearchTest (String[] name) {
+        for (String nameBlock:name) {
+            switch (nameBlock) {
+                case "Вебинары": {
+                    assertThat(event.getText(), containsString("Java Junior. Что нужно знать для успешного собеседования?"));
+                    break;
+                }
+                case "Проекты и компании": {
+                    assertThat(project.getText(), containsString("GeekBrains"));
+                    break;
+                }
+                default: {
+                    throw new RuntimeException("Нет блока: " + nameBlock);
+                }
             }
         }
         return new SearchPage(driver);

@@ -5,14 +5,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import ru.geekbrain.main.site.at.elementsTestSearch.CountSearchElement;
+import ru.geekbrain.main.site.at.elementsTestSearch.CountTest;
 import ru.geekbrain.main.site.at.elementsTestSearch.SearchElement;
 import ru.geekbrain.main.site.at.elementsTestSearch.TextSearchTest;
 
 public class SearchPage {
     private WebDriver driver;
+    private CountTest countTest;
     private SearchElement searchElement;
-    private CountSearchElement countSearchElement;
     public TextSearchTest textSearchTest;
 
     //элемент поп-апа
@@ -28,8 +28,8 @@ public class SearchPage {
 
     public SearchPage(WebDriver driver) {
         this.driver = driver;
+        countTest = new CountTest(driver);
         searchElement = new SearchElement(driver);
-        countSearchElement = new CountSearchElement(driver);
         textSearchTest = new TextSearchTest(driver);
         PageFactory.initElements(driver,this);
     }
@@ -47,24 +47,22 @@ public class SearchPage {
     }
 
     @Step("Ввод текста 'Java' для проверки поиска")
-    public SearchPage inputSearchText() {
-        searchPanel.sendKeys("java");
+    public SearchPage inputSearchText(String search) {
+        searchPanel.sendKeys(search);
         return this;
     }
 
-    //Проверка отображеения передаваемого блока - Step прописан в методе
-    public SearchElement getSearchElement() {
-        return searchElement;
+    public CountTest getCountTest() {
+        return countTest;
     }
 
-    //Проверка  на количество найденных элементов - Step прописан в методе
-    public CountSearchElement getCountSearchElement(){
-        return countSearchElement;
-    }
-
-    //Проверка, что найдены нужные элементы - Step прописан в методе
     public TextSearchTest getTextSearchTest(){
         return textSearchTest;
     }
 
+    public SearchElement getSearchElement() {
+        return searchElement;
+    }
+
 }
+
