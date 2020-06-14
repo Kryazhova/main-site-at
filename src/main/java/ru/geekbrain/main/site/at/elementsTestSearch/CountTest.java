@@ -1,13 +1,9 @@
 package ru.geekbrain.main.site.at.elementsTestSearch;
 
-import io.qameta.allure.Step;
-import org.hamcrest.Matcher;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
-import static org.hamcrest.MatcherAssert.assertThat;
 
 public class CountTest {
     private WebDriver driver;
@@ -40,32 +36,32 @@ public class CountTest {
 
 
     //        Проверка на количество элементов
-    @Step("Проверка, что найдено правильное количество элементов для блока {blocks}")
-    public CountTest checkCount(String blocks, Matcher<Integer> matcher) {
-        String сount = getButton(blocks).getText();
-        assertThat(Integer.parseInt(сount), matcher);
-        return this;
-    }
+//    @Step("Проверка, что найдено правильное количество элементов для блока {blocks}")
+//    public CountTest checkCount(Blocks blocks, Matcher<Integer> matcher) {
+//        String сount = getButton(blocks).getText();
+//        assertThat(Integer.parseInt(сount), matcher);
+//        return this;
+//    }
 
+    // Enum —  специальный класс для создания списка значений.
+    public enum Blocks {
+        Professions("Профессии"),
+        Courses("Курсы"),
+        Events("Вебинары"),
+        Blogs("Блоги"),
+        Forum("Форум"),
+        Tests("Тесты"),
+        Companies("Проекты и компании");
 
-    private WebElement getButton(String blocks) {
-        switch (blocks) {
-            case "Профессии":
-                return professions;
-            case "Курсы":
-                return courses;
-            case "Вебинары":
-                return events;
-            case "Блоги":
-                return blogs;
-            case "Форум":
-                return forum;
-            case "Тесты":
-                return tests;
-            case "Проекты и компании":
-                return project ;
-            default:
-                throw new IllegalStateException("Unexpected value: " + blocks);
+        private String text;
+
+        Blocks(String text) {
+            this.text = text;
+        }
+
+        public String getText() {
+            return text;
         }
     }
 }
+

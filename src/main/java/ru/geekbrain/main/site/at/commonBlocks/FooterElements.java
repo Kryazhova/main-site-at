@@ -1,17 +1,14 @@
-package ru.geekbrain.main.site.at.elementsTestNavigation;
+package ru.geekbrain.main.site.at.commonBlocks;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import ru.geekbrain.main.site.at.pages.Pages;
 
 //верхнеуровневые проверки футера
 
-public class FooterElements {
-    private WebDriver driver;
+public class FooterElements extends BasePageObject {
 
     @FindBy(css =  "[class='site-footer']")
     private WebElement baseFooterElement;
@@ -27,18 +24,18 @@ public class FooterElements {
 
 
     public FooterElements(WebDriver driver){
-        this.driver = driver;
+        super(driver);
         PageFactory.initElements(driver,this);
     }
 
-    public Pages testFooter(){
-            new WebDriverWait(driver, 10)
-                    .until(ExpectedConditions.visibilityOfAllElements(
+    ContentBasePage contentBasePage;
+    public ContentBasePage testFooter(){
+           wait10second.until(ExpectedConditions.visibilityOfAllElements(
                             baseFooterElement,
                             footerIcons,
                             footerLinks,
                             footerIconsAndroid));
-            return new Pages(driver);
+            return contentBasePage;
     }
 
 }

@@ -1,12 +1,6 @@
 package ru.geekbrains.main.site.at;
 
-import io.qameta.allure.Description;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import ru.geekbrain.main.site.at.pages.SearchPage;
-import ru.geekbrains.main.site.at.base.Base;
-
-import static org.hamcrest.Matchers.*;
+import ru.geekbrains.main.site.at.base.BeforeAndAfterStep;
 
 //    Перейти на сайт https://geekbrains.ru/courses
 //            Нажать на кнопку Поиск
@@ -21,7 +15,7 @@ import static org.hamcrest.Matchers.*;
 //            Тестов не 0
 //            В Проектах и компаниях отображается GeekBrains
 
-public class SearchTest extends Base {
+public class SearchTest extends BeforeAndAfterStep {
 
     String[] nameBlock = new String[]{
             "Профессии","Курсы","Вебинары","Блоги", "Форум", "Тесты", "Проекты и компании"
@@ -30,27 +24,27 @@ public class SearchTest extends Base {
            "Вебинары","Проекты и компании"
     };
 
-    @DisplayName("Проверка поиска")
-    @Description("Проверка поиска по слову \"Java\"")
-    @Test
-     void events(){
-        new SearchPage(driver)
-                .closePopup()
-                .clickIconSearch()
-                .inputSearchText("java")
-                .getSearchElement()
-                .testSearchPage(nameBlock)
-                .getTextSearchTest()
-                .textSearchTest(nameTextCheck)
-                .getCountTest()
-                .checkCount("Профессии", greaterThanOrEqualTo(2))
-                .checkCount("Курсы", greaterThan(15))
-                .checkCount("Вебинары", allOf(
-                        greaterThan(180),
-                        lessThan(300)))
-                .checkCount("Блоги", greaterThan(300))
-                .checkCount("Форум", not(350))
-                .checkCount("Тесты", not(0));
-
-    }
+//    @DisplayName("Проверка поиска")
+//    @Description("Проверка поиска по слову \"Java\"")
+//    @Test
+//     void events(){
+//        new SearchPage(driver)
+//                .closePopup()
+//                .clickIconSearch()
+//                .inputSearchText("java")
+//                .getSearchElement()
+//                .testSearchPage(nameBlock)
+//                .getTextSearchTest()
+//                .textSearchTest(nameTextCheck)
+//                .getCountTest()
+//                .checkCount("Профессии", greaterThanOrEqualTo(2))
+//                .checkCount("Курсы", greaterThan(15))
+//                .checkCount("Вебинары", allOf(
+//                        greaterThan(180),
+//                        lessThan(300)))
+//                .checkCount("Блоги", greaterThan(300))
+//                .checkCount("Форум", not(350))
+//                .checkCount("Тесты", not(0));
+//
+//    }
 }
