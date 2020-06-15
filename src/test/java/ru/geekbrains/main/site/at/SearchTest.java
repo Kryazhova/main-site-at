@@ -5,7 +5,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import ru.geekbrain.main.site.at.elementsTestSearch.SearchElement;
-import ru.geekbrain.main.site.at.pages.SearchPage;
 import ru.geekbrain.main.site.at.pages.StartPage;
 import ru.geekbrains.main.site.at.base.BeforeAndAfterStep;
 
@@ -54,14 +53,6 @@ public class SearchTest extends BeforeAndAfterStep {
                 .checkCount(SearchElement.SearchTab.Blogs, greaterThan(300))
                 .checkCount(SearchElement.SearchTab.Forums, not(350))
                 .checkCount(SearchElement.SearchTab.Tests, not(0));
-        new SearchPage(driver)
-                .getSearchTextElement()
-                .testSearchText(SearchElement.SearchTab.Professions,"Программист Java")
-                .testSearchText(SearchElement.SearchTab.Courses,"Java. Уровень 2")
-                .testSearchText(SearchElement.SearchTab.Blogs,"11 плюшек для Java-разработчика")
-                .testSearchText(SearchElement.SearchTab.Enents, "Java Junior. Что нужно знать для успешного собеседования?")
-                .testSearchText(SearchElement.SearchTab.Companies," GeekBrains")
-                .testSearchText(SearchElement.SearchTab.Tests,"Java. Начальный уровень");
 
     }
 }

@@ -16,4 +16,6 @@ public class StartPage extends ContentBasePage {
         driver.get("https://geekbrains.ru/courses");
         return this;
     }
+
+
 }

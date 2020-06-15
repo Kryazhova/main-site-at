@@ -16,25 +16,25 @@ public class SearchElement  extends BasePageObject {
     @FindBy(css = "[class='search-page-tabs'] [data-tab='all']")
     private WebElement everyWhere;
 
-    @FindBy(xpath = ".//header/h2[text()='Профессии']")
+    @FindBy(css = "[class='search-page-tabs'] [data-tab='professions']")
     private WebElement profession;
 
-    @FindBy(xpath = ".//header/h2[text()='Курсы']")
+    @FindBy(css = "[class='search-page-tabs'] [data-tab='courses']")
     private WebElement course;
 
-    @FindBy(xpath = ".//header/h2[text()='Вебинары']")
+    @FindBy(css = "[class='search-page-tabs'] [data-tab='webinars']")
     private WebElement event;
 
-    @FindBy(xpath = ".//header/h2[text()='Блоги']")
+    @FindBy(css = "[class='search-page-tabs'] [data-tab='blogs']")
     private WebElement blog;
 
-    @FindBy(xpath = ".//header/h2[text()='Форум']")
+    @FindBy(css = "[class='search-page-tabs'] [data-tab='forums']")
     private WebElement forums;
 
-    @FindBy(xpath = ".//header/h2[text()='Тесты']")
+    @FindBy(css = "[class='search-page-tabs'] [data-tab='tests']")
     private WebElement test;
 
-    @FindBy(xpath = ".//header/h2[text()='Проекты и компании']")
+    @FindBy(css = "[class='search-page-tabs'] [data-tab='companies']")
     private WebElement projectAndCompanies;
 
     public SearchElement(WebDriver driver) {
@@ -48,7 +48,7 @@ public class SearchElement  extends BasePageObject {
         return this;
     }
 
-    @Step("Проверка блока {name}")
+    @Step("Проверка блока {searchTab}")
     private WebElement testSearchElement (SearchTab searchTab) {
             switch (searchTab) {
                 case Everywhere: {

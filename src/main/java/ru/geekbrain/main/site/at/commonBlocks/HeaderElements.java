@@ -92,7 +92,7 @@ public class HeaderElements extends BasePageObject {
         return this;
     }
 
-    @Step("поиск на сайте по тексту: {realNamePage}")
+    @Step("поиск на сайте по тексту: {text}")
     public SearchPage searchText(String text) {
         searchItem.click();
         inputSearch.sendKeys(text);
