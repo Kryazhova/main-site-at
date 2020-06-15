@@ -1,16 +1,20 @@
 package ru.geekbrain.main.site.at.elementsTestSearch;
 
 import io.qameta.allure.Step;
+import org.hamcrest.Matcher;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import ru.geekbrain.main.site.at.pages.SearchPage;
+import ru.geekbrain.main.site.at.commonBlocks.BasePageObject;
 
-public class SearchElement {
-    private WebDriver driver;
+import static org.hamcrest.MatcherAssert.assertThat;
+
+public class SearchElement  extends BasePageObject {
+
+    @FindBy(css = "[class='search-page-tabs'] [data-tab='all']")
+    private WebElement everyWhere;
 
     @FindBy(xpath = ".//header/h2[text()='Профессии']")
     private WebElement profession;
@@ -34,47 +38,67 @@ public class SearchElement {
     private WebElement projectAndCompanies;
 
     public SearchElement(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
         PageFactory.initElements(driver, this);
     }
+
+    public SearchElement checkCount(SearchTab searchTab, Matcher<Integer> matcher) {
+        String actualCount = testSearchElement(searchTab).findElement(By.cssSelector("span")).getText();
+        assertThat(Integer.parseInt(actualCount), matcher);
+        return this;
+    }
+
     @Step("Проверка блока {name}")
-    public SearchPage testSearchPage (String[] name) {
-        WebDriverWait wait20 = new WebDriverWait(driver,20);
-        for (String nameBlock:name) {
-            switch (nameBlock) {
-                case "Профессии": {
-                    wait20.until(ExpectedConditions.textToBePresentInElement(profession, nameBlock));
-                    break;
+    private WebElement testSearchElement (SearchTab searchTab) {
+            switch (searchTab) {
+                case Everywhere: {
+                    return everyWhere;
                 }
-                case "Курсы": {
-                    wait20.until(ExpectedConditions.textToBePresentInElement(course, nameBlock));
-                    break;
+                case Professions: {
+                    return profession;
                 }
-                case "Вебинары": {
-                    wait20.until(ExpectedConditions.textToBePresentInElement(event, nameBlock));
-                    break;
+                case Courses: {
+                   return course;
                 }
-                case "Блоги": {
-                    wait20.until(ExpectedConditions.textToBePresentInElement(blog, nameBlock));
-                    break;
+                case Enents:{
+                    return event;
                 }
-                case "Форум": {
-                    wait20.until(ExpectedConditions.textToBePresentInElement(forums, nameBlock));
-                    break;
+                case Blogs: {
+                    return blog;
                 }
-                case "Тесты": {
-                    wait20.until(ExpectedConditions.textToBePresentInElement(test, nameBlock));
-                    break;
+                case Forums: {
+                   return forums;
                 }
-                case "Проекты и компании": {
-                    wait20.until(ExpectedConditions.textToBePresentInElement(projectAndCompanies, nameBlock));
-                    break;
+                case Tests: {
+                    return test;
+                }
+                case Companies: {
+                    return projectAndCompanies;
                 }
                 default: {
-                    throw new RuntimeException("Нет блока: " + nameBlock);
+                    throw new IllegalStateException("Нет блока: " + searchTab);
                 }
-            }
         }
-        return new SearchPage(driver);
+    }
+
+    public enum SearchTab {
+        Everywhere("Везде"),
+        Professions("Профессии"),
+        Courses("Курсы"),
+        Enents("Вебинары"),
+        Blogs("Блоги"),
+        Forums("Форумы"),
+        Tests("Тесты"),
+        Companies("Компании");
+
+        private String text;
+
+        SearchTab(String text) {
+            this.text = text;
+        }
+
+        public String getText() {
+            return text;
+        }
     }
 }

@@ -43,6 +43,12 @@ public abstract class ContentBasePage extends BasePageObject implements OpenUrl 
         return this;
     }
 
+    public ContentBasePage testHeaderAndFooterAuthorized(NavigationElements.Button nameButton){
+        this.getHeader().testHeaderAuthorized();
+        this.getFooter().testFooter();
+        this.getHeader().checkNamePage(nameButton.getText());
+        return this;
+    }
     public HeaderElements getHeader() {
         return headerElements;
     }
@@ -50,13 +56,5 @@ public abstract class ContentBasePage extends BasePageObject implements OpenUrl 
         return footerElements;
     }
 
-    /**
-     * Адаптер над объектом HeaderBlock
-     * После работы с методом HeaderBlock#checkNamePage(String) сайт остается на тойже странице
-     */
-    public ContentBasePage checkNamePage(String realNamePage) {
-        headerElements.checkNamePage(realNamePage);
-        return this;
-    }
 
 }

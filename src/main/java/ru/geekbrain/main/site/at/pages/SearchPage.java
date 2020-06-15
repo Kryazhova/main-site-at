@@ -1,67 +1,32 @@
 package ru.geekbrain.main.site.at.pages;
 
-import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import ru.geekbrain.main.site.at.elementsTestSearch.CountTest;
+import ru.geekbrain.main.site.at.commonBlocks.ContentBasePage;
 import ru.geekbrain.main.site.at.elementsTestSearch.SearchElement;
-import ru.geekbrain.main.site.at.elementsTestSearch.TextSearchTest;
+import ru.geekbrain.main.site.at.elementsTestSearch.SearchTextElement;
 
-public class SearchPage {
-    private WebDriver driver;
-    private CountTest countTest;
+public class SearchPage  extends ContentBasePage {
     private SearchElement searchElement;
-    public TextSearchTest textSearchTest;
-
-    //элемент поп-апа
-    @FindBy(css ="button>[class=\"svg-icon icon-popup-close-button \"]")
-    private WebElement popupClose;
-
-    @FindBy(css = "[class=\"show-search-form\"] [class=\"svg-icon icon-search \"]")
-    private WebElement searchIcon;
-
-    @FindBy(css = "[class=\"search-panel__search-field\"]")
-    private WebElement searchPanel;
-
+    private SearchTextElement searchTextElement;
 
     public SearchPage(WebDriver driver) {
-        this.driver = driver;
-        countTest = new CountTest(driver);
-        searchElement = new SearchElement(driver);
-        textSearchTest = new TextSearchTest(driver);
-        PageFactory.initElements(driver,this);
+        super(driver);
+        this.searchElement = new SearchElement(driver);
+        this.searchTextElement = new SearchTextElement(driver);
     }
 
-   @Step("Закрытие поп-апа на стартовой странице")
-    public SearchPage closePopup() {
-        popupClose.click();
+    @Override
+    public SearchPage openUrl() {
+        driver.get("https://geekbrains.ru/search");
         return this;
-    }
-
-    @Step("Нажатие на иконку поиска")
-    public SearchPage clickIconSearch(){
-        searchIcon.click();
-        return this;
-    }
-
-    @Step("Ввод текста 'Java' для проверки поиска")
-    public SearchPage inputSearchText(String search) {
-        searchPanel.sendKeys(search);
-        return this;
-    }
-
-    public CountTest getCountTest() {
-        return countTest;
-    }
-
-    public TextSearchTest getTextSearchTest(){
-        return textSearchTest;
     }
 
     public SearchElement getSearchElement() {
         return searchElement;
+    }
+
+    public SearchTextElement getSearchTextElement(){
+        return searchTextElement;
     }
 
 }
