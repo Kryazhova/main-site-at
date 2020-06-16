@@ -1,6 +1,8 @@
 package ru.geekbrains.main.site.at;
 
 import io.qameta.allure.Description;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -27,6 +29,9 @@ import static org.hamcrest.Matchers.*;
 //            В вебинарах отображается первым “Java Junior. Что нужно знать для успешного собеседования?”
 //            В Проектах и компаниях отображается GeekBrains
 
+@Feature("Поиск по сайту")
+@Story("Проверка поиска")
+@DisplayName("Проверка поиска")
 public class SearchTest extends BeforeAndAfterStep {
 
     @BeforeEach

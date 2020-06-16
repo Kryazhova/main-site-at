@@ -1,5 +1,6 @@
 package ru.geekbrain.main.site.at.commonBlocks;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -24,6 +25,7 @@ public abstract class ContentBasePage extends BasePageObject implements OpenUrl 
         PageFactory.initElements(driver, this);
     }
 
+    @Step("Закрытие поп-апа")
     public ContentBasePage closedPopUp() {
         wait10second.until(ExpectedConditions.visibilityOf(popupClose));
         if (popupClose.isDisplayed()) {
@@ -42,6 +44,7 @@ public abstract class ContentBasePage extends BasePageObject implements OpenUrl 
         this.getHeader().checkNamePage(nameButton.getText());
         return this;
     }
+
 
     public ContentBasePage testHeaderAndFooterAuthorized(NavigationElements.Button nameButton){
         this.getHeader().testHeaderAuthorized();

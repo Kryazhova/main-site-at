@@ -83,7 +83,7 @@ public class HeaderElements extends BasePageObject {
         return this;
     }
 
-    @Step("проверка что имя страницы: {realNamePage}")
+    @Step("проверка, что имя страницы: {realNamePage}")
     public HeaderElements checkNamePage(String realNamePage) {
         wait10second.until(ExpectedConditions.textToBePresentInElement(titleHeader, realNamePage));
 

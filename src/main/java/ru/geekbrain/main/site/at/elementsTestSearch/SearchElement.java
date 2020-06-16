@@ -42,6 +42,7 @@ public class SearchElement  extends BasePageObject {
         PageFactory.initElements(driver, this);
     }
 
+    @Step("Проверка, что найдено нужнок количество элементов для блока {searchTab}")
     public SearchElement checkCount(SearchTab searchTab, Matcher<Integer> matcher) {
         String actualCount = testSearchElement(searchTab).findElement(By.cssSelector("span")).getText();
         assertThat(Integer.parseInt(actualCount), matcher);

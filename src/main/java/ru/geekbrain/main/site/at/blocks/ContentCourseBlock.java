@@ -1,5 +1,6 @@
 package ru.geekbrain.main.site.at.blocks;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -26,6 +27,7 @@ public class ContentCourseBlock extends BasePageObject {
         PageFactory.initElements(driver, this);
     }
 
+    @Step("Нажатие на таб {tab}")
     public CoursePage clickTab(Tab tab) {
         switch (tab) {
             case Professions: {
