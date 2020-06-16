@@ -38,9 +38,6 @@ public class HeaderElements extends BasePageObject {
     Поля доступные только авторизованному пользователю
     * */
 
-    @FindBy(css = "header [class='schedule-opener js-schedule-opener']")
-    private WebElement buttonCalendar;
-
     @FindBy(css = "[class='js-notices-link']")
     private WebElement buttonNotify;
 
@@ -75,11 +72,11 @@ public class HeaderElements extends BasePageObject {
                         topMenu,
                         titleHeader,
                         searchItem,
-                        buttonCalendar,
                         buttonNotify,
                         buttonLike,
                         buttonMessages,
-                        buttonAvatar));
+                        buttonAvatar
+                        ));
         return this;
     }
 
